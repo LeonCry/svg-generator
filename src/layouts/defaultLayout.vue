@@ -1,7 +1,5 @@
 <template>
-  <main class="h-screen w-screen">
-    <!-- push route or component here -->
-    <!-- <RouterView /> -->
-    <!-- <Component /> -->
+  <main class="relative h-screen w-screen">
+    <OuterBox />
   </main>
 </template>

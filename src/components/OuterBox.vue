@@ -34,10 +34,12 @@ const generateLocation = ref<GenerateLocationType[]>([
   {
     beginBlock: [0, 0],
     endBlock: [0, 6],
+    endPointType: 'arrow',
   },
   {
     beginBlock: [0, 0],
     endBlock: [6, 0],
+    endPointType: 'arrow',
   },
   {
     beginBlock: [0, 1],
@@ -52,6 +54,11 @@ const generateLocation = ref<GenerateLocationType[]>([
   {
     beginBlock: [1, 2],
     endBlock: [3, 3],
+    endPointType: 'arrow',
+  },
+  {
+    beginBlock: [2, 6],
+    endBlock: [3, 4],
     endPointType: 'arrow',
   },
   {

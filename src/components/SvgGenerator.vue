@@ -35,11 +35,16 @@ const generateSvgItem = (item: GenerateLocationType) => {
     beginColumn * (width + gapX) + width / 2,
     beginRow * (height + gapY) + height / 2,
   ] as const;
-  const end = [
-    endColumn * (width + gapX) + width / 2,
-    endRow * (height + gapY) + height / 2,
-  ] as const;
-  if (begin[0] === end[0] || begin[1] === end[1]) return renderLine(begin, end, endPointType);
+  const cutX =
+    endPointType === 'arrow' && beginColumn !== endColumn
+      ? -svgOptions.value.arrowWidth
+      : width / 2;
+  const cutY =
+    endPointType === 'arrow' && beginColumn === endColumn
+      ? -svgOptions.value.arrowWidth
+      : height / 2;
+  const end = [endColumn * (width + gapX) + cutX, endRow * (height + gapY) + cutY] as const;
+  if (beginColumn === endColumn || beginRow === endRow) return renderLine(begin, end, endPointType);
   return renderTurnedLine(begin, end, endPointType);
 };
 const renderLine = (
@@ -102,7 +107,6 @@ watch(
   props.generateLocation,
   () => {
     reGenerateSvg();
-    console.log(svgImageUrl.value);
   },
   { deep: true, immediate: true },
 );
